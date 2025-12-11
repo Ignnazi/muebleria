@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Muebler</title>  <!--Fusion DE mueble con hermanos muebler!-->
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("fondo.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background: linear-gradient(90deg, #3d2620, #7b4a2b);
+      color: #fdf8f3;
+      padding: 18px 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-family: "Georgia", "Times New Roman", serif;
+      letter-spacing: 0.5px;
+    }
+
+    main {
+      padding: 25px 30px 45px;
+    }
+
+    .card {
+      background: rgba(255, 249, 242, 0.96);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 26px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(139, 90, 43, 0.18);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 24px;
+      color: #3b241b;
+    }
+
+    h3, h4 {
+      font-family: "Georgia", "Times New Roman", serif;
+      color: #4b2e22;
+      margin-bottom: 8px;
+    }
+
+    button {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid #c77732;
+      background: #c77732;
+      color: #fffdf9;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease, color 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+
+    button.secondary {
+      background: transparent;
+      color: #c77732;
+      border-color: #c77732;
+      box-shadow: none;
+    }
+
+    button:hover {
+      opacity: 0.96;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+      background: #a85f24;
+    }
+
+    button.secondary:hover {
+      background: rgba(199, 119, 50, 0.12);
+      color: #a4511c;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid #e1c9af;
+      padding: 7px 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #f4e2cf;
+      color: #4b2e22;
+      font-weight: 600;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fff8f0;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: #fffdf8;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 6px 7px;
+      margin-bottom: 6px;
+      border-radius: 6px;
+      border: 1px solid #d3b89c;
+      box-sizing: border-box;
+      font-size: 13px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #fffdf9;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 6px 7px;
+      margin-bottom: 6px;
+      border-radius: 6px;
+      border: 1px solid #d3b89c;
+      box-sizing: border-box;
+      font-size: 13px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #fffdf9;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #c77732;
+      box-shadow: 0 0 0 2px rgba(199, 119, 50, 0.25);
+    }
+
+    .fila-form {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 6px 10px;
+      margin-bottom: 6px;
+      max-width: 470px;
+    }
+
+    .fila-form label {
+      padding-top: 4px;
+      font-size: 13px;
+      color: #5b3b2e;
+    }
+
+    .fila-form input {
+      margin-bottom: 0;
+    }
+
+    .btn-row {
+      margin-top: 12px;
+    }
+
+    .btn-row button + button {
+      margin-left: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .small-text {
+      font-size: 13px;
+      color: #6b5144;
+      line-height: 1.5;
+    }
+
+    .top-actions {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>EMPRESA MUEBLER "Mueblería los muebles hermanos S.A."</h1>
+</header>
+
+<main>
+  <section id="vista-inicio" class="card">
+    <h2>Bienvenido a la página</h2>
+    <p class="small-text">
+      “Mueblería los muebles hermanos S.A” comercializa distintos tipos de muebles
+      (sillas, sillones, mesas, estantes y cajones), con diferentes variaciones
+      (material, tamaño y estilos).
+    </p>
+    <p class="small-text">
+      Elige cómo quieres entrar:
+    </p>
+    <div class="top-actions">
+      <button onclick="irAGustavo()">Entrar como Administrador</button>
+      <button class="secondary" onclick="irAUsuario()">Entrar como Cliente</button>
+    </div>
+  </section>
+
+  <section id="vista-gustavo" class="card hidden">
+    <div class="top-actions">
+      <button class="secondary" onclick="volverInicio()">← Volver</button>
+    </div>
+
+    <h2>ADMINISTRADOR</h2>
+
+    <div>
+      <h3>Catálogo actual</h3>
+
+      <div id="contenedor-catalogo-admin">
+        <table>
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Precio base</th>
+            <th>Stock</th>
+            <th>Estado</th>
+            <th>Tamaño</th>
+            <th>Material</th>
+          </tr>
+          </thead>
+          <tbody id="tabla-admin"></tbody>
+        </table>
+      </div>
+
+      <div class="btn-row" style="margin-top: 15px;">
+        <button onclick="mostrarFormMueble('crear')">Añadir mueble nuevo</button>
+        <button onclick="mostrarFormMueble('actualizar')">Actualizar mueble antiguo</button>
+        <button onclick="mostrarFormMueble('eliminar')">Eliminar mueble</button>
+      </div>
+    </div>
+
+    <div id="seccion-form-mueble" style="margin-top: 20px;" class="hidden">
+      <h3 id="titulo-form-mueble">Crear / actualizar mueble</h3>
+
+      <div class="fila-form">
+        <div id="fila-id-mueble">
+          <label for="a-id">ID (para actualizar):</label>
+          <input id="a-id" type="number" placeholder="ID del mueble a actualizar" />
+        </div>
+
+        <label for="a-nombre">Nombre:</label>
+        <input id="a-nombre" type="text" placeholder="Ej: Silla Gamer" />
+
+        <label for="a-tipo">Tipo:</label>
+        <input id="a-tipo" type="text" placeholder="silla, sofá, mesa..." />
+
+        <label for="a-precio">Precio base:</label>
+        <input id="a-precio" type="number" placeholder="Ej: 99990" />
+
+        <label for="a-stock">Stock:</label>
+        <input id="a-stock" type="number" placeholder="Ej: 10" />
+
+        <label for="a-estado">Estado:</label>
+        <input id="a-estado" type="text" placeholder="activo / inactivo" />
+
+        <label for="a-tamano">Tamaño:</label>
+        <input id="a-tamano" type="text" placeholder="Pequeño, Mediano..." />
+
+        <label for="a-material">Material:</label>
+        <input id="a-material" type="text" placeholder="Madera, Fierro..." />
+      </div>
+
+      <div class="btn-row">
+        <button onclick="guardarMueble()">Guardar</button>
+      </div>
+    </div>
+
+    <div id="seccion-eliminar-mueble" style="margin-top: 20px;" class="hidden">
+      <h3>Eliminar mueble</h3>
+      <div class="fila-form" style="max-width: 250px;">
+        <label for="a-id-eliminar">ID a eliminar:</label>
+        <input id="a-id-eliminar" type="number" placeholder="Ej: 2" />
+      </div>
+      <button onclick="eliminarMueble()">Eliminar</button>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <h3>Gestión de variantes</h3>
+
+      <table>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre variante</th>
+          <th>Porcentaje (%)</th>
+        </tr>
+        </thead>
+        <tbody id="tabla-variantes"></tbody>
+      </table>
+
+      <div class="btn-row" style="margin-top: 15px;">
+        <button onclick="mostrarFormVariante('crear')">Añadir variante nueva</button>
+        <button onclick="mostrarFormVariante('actualizar')">Actualizar variante</button>
+        <button onclick="mostrarFormVariante('eliminar')">Eliminar variante</button>
+      </div>
+
+      <div id="form-variante-crear" class="card hidden" style="margin-top: 15px; max-width: 500px;">
+        <h4>Añadir variante nueva</h4>
+        <div class="fila-form">
+          <label for="v-nombre-crear">Nombre variante:</label>
+          <input id="v-nombre-crear" type="text" placeholder="Ej: normal, cuero real..." />
+
+          <label for="v-porcentaje-crear">Porcentaje (%):</label>
+          <input id="v-porcentaje-crear" type="number" placeholder="Ej: 10" />
+        </div>
+        <button onclick="guardarVariante('crear')">Guardar</button>
+      </div>
+
+      <div id="form-variante-actualizar" class="card hidden" style="margin-top: 15px; max-width: 500px;">
+        <h4>Actualizar variante</h4>
+        <div class="fila-form">
+          <label for="v-nombre-actual">Nombre actual:</label>
+          <input id="v-nombre-actual" type="text" placeholder="Ej: cuero real" />
+
+          <label for="v-nombre-nuevo">Nuevo nombre (opcional):</label>
+          <input id="v-nombre-nuevo" type="text" placeholder="Déjalo vacío si no cambia" />
+
+          <label for="v-porcentaje-actualizar">Porcentaje (%):</label>
+          <input id="v-porcentaje-actualizar" type="number" placeholder="Ej: 25" />
+        </div>
+        <button onclick="guardarVariante('actualizar')">Guardar</button>
+      </div>
+
+      <div id="form-variante-eliminar" class="card hidden" style="margin-top: 15px; max-width: 500px;">
+        <h4>Eliminar variante</h4>
+        <div class="fila-form">
+          <label for="v-nombre-eliminar">Nombre variante:</label>
+          <input id="v-nombre-eliminar" type="text" placeholder="Ej: ruedas" />
+        </div>
+        <button onclick="guardarVariante('eliminar')">Eliminar</button>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <h3>Cotizar ó vender productos</h3>
+
+      <table>
+        <thead>
+        <tr>
+          <th>ID mueble</th>
+          <th>Variante</th>
+          <th>Cantidad</th>
+        </tr>
+        </thead>
+        <tbody id="g-comandos-body"></tbody>
+      </table>
+
+      <div class="btn-row">
+        <button onclick="agregarLinea('g-comandos-body')">Agregar línea</button>
+      </div>
+
+      <div class="btn-row">
+        <button onclick="cotizarGustavo()">Cotizar</button>
+        <button onclick="venderGustavo()">Vender</button>
+      </div>
+
+      <p id="g-resultado-cotizacion" class="small-text"></p>
+      <p id="g-resultado-venta" class="small-text"></p>
+    </div>
+  </section>
+
+  <section id="vista-usuario" class="card hidden">
+    <div class="top-actions">
+      <button class="secondary" onclick="volverInicio()">← Volver</button>
+    </div>
+
+    <h2>CLIENTE</h2>
+
+    <div>
+      <h3>Catálogo de muebles</h3>
+      <table>
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Precio base</th>
+          <th>Stock</th>
+          <th>Estado</th>
+          <th>Tamaño</th>
+          <th>Material</th>
+        </tr>
+        </thead>
+        <tbody id="tabla-usuario"></tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <h3>Variantes disponibles</h3>
+      <table>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre variante</th>
+          <th>Porcentaje (%)</th>
+        </tr>
+        </thead>
+        <tbody id="tabla-variantes-cliente"></tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <h3>Cotizar y/ó Comprar</h3>
+
+      <table>
+        <thead>
+        <tr>
+          <th>ID mueble</th>
+          <th>Variante</th>
+          <th>Cantidad</th>
+        </tr>
+        </thead>
+        <tbody id="u-comandos-body"></tbody>
+      </table>
+
+      <div class="btn-row">
+        <button onclick="agregarLinea('u-comandos-body')">Agregar línea</button>
+      </div>
+
+      <div class="btn-row">
+        <button onclick="cotizarCliente()">Cotizar</button>
+        <button onclick="venderCliente()">Comprar</button>
+      </div>
+
+      <p id="u-resultado-cotizacion" class="small-text"></p>
+      <p id="u-resultado-venta" class="small-text"></p>
+    </div>
+  </section>
+</main>
+
+<script>
+  const API_BASE = "http://localhost:8080/api";
+  let modoMueble = "crear";
+
+  function mostrarSolo(id) {
+    document.getElementById('vista-inicio').classList.add('hidden');
+    document.getElementById('vista-gustavo').classList.add('hidden');
+    document.getElementById('vista-usuario').classList.add('hidden');
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  function irAGustavo() {
+    mostrarSolo('vista-gustavo');
+    listarMueblesAdmin();
+    listarVariantes();
+    if (!document.getElementById('g-comandos-body').children.length) {
+      agregarLinea('g-comandos-body');
+    }
+  }
+
+  function irAUsuario() {
+    mostrarSolo('vista-usuario');
+    listarMueblesUsuario();
+    listarVariantesCliente();
+    if (!document.getElementById('u-comandos-body').children.length) {
+      agregarLinea('u-comandos-body');
+    }
+  }
+
+  function volverInicio() {
+    mostrarSolo('vista-inicio');
+  }
+
+  function limpiarFormMueble() {
+    document.getElementById('a-id').value = '';
+    document.getElementById('a-nombre').value = '';
+    document.getElementById('a-tipo').value = '';
+    document.getElementById('a-precio').value = '';
+    document.getElementById('a-stock').value = '';
+    document.getElementById('a-estado').value = '';
+    document.getElementById('a-tamano').value = '';
+    document.getElementById('a-material').value = '';
+  }
+
+  function mostrarFormMueble(tipo) {
+    const formSec = document.getElementById('seccion-form-mueble');
+    const elimSec = document.getElementById('seccion-eliminar-mueble');
+    const filaId = document.getElementById('fila-id-mueble');
+    const titulo = document.getElementById('titulo-form-mueble');
+
+    formSec.classList.add('hidden');
+    elimSec.classList.add('hidden');
+
+    if (tipo === 'crear') {
+      modoMueble = 'crear';
+      titulo.textContent = 'Añadir mueble nuevo';
+      filaId.style.display = 'none';
+      limpiarFormMueble();
+      formSec.classList.remove('hidden');
+    } else if (tipo === 'actualizar') {
+      modoMueble = 'actualizar';
+      titulo.textContent = 'Actualizar mueble antiguo';
+      filaId.style.display = 'contents';
+      limpiarFormMueble();
+      formSec.classList.remove('hidden');
+    } else if (tipo === 'eliminar') {
+      elimSec.classList.remove('hidden');
+    }
+  }
+
+  function dibujarTabla(tbodyId, muebles) {
+    const tbody = document.getElementById(tbodyId);
+    tbody.innerHTML = '';
+
+    muebles.forEach(m => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${m.id_mueble ?? ''}</td>
+        <td>${m.nombre_mueble ?? ''}</td>
+        <td>${m.tipo ?? ''}</td>
+        <td>${m.precio_base ?? ''}</td>
+        <td>${m.stock ?? ''}</td>
+        <td>${m.estado ?? ''}</td>
+        <td>${m["tamaño"] ?? ''}</td>
+        <td>${m.material ?? ''}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function dibujarTablaVariantes(tbodyId, variantes) {
+    const tbody = document.getElementById(tbodyId);
+    tbody.innerHTML = '';
+
+    variantes.forEach((v, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${v.nombre_variante ?? ''}</td>
+        <td>${v.porcentaje ?? ''}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  async function listarMueblesAdmin() {
+    try {
+      const resp = await fetch(`${API_BASE}/mueble`);
+      if (!resp.ok) throw new Error();
+      const data = await resp.json();
+      dibujarTabla('tabla-admin', data);
+    } catch (e) {
+      alert('Error al listar muebles (Gustavo)');
+    }
+  }
+
+  async function guardarMueble() {
+    const id       = document.getElementById('a-id').value;
+    const nombre   = document.getElementById('a-nombre').value.trim();
+    const tipo     = document.getElementById('a-tipo').value.trim();
+    const precio   = document.getElementById('a-precio').value;
+    const stock    = document.getElementById('a-stock').value;
+    const estado   = document.getElementById('a-estado').value.trim();
+    const tamano   = document.getElementById('a-tamano').value.trim();
+    const material = document.getElementById('a-material').value.trim();
+
+    if (!nombre || !tipo || !precio) {
+      alert('Completa al menos Nombre, Tipo y Precio base.');
+      return;
+    }
+
+    const cuerpo = {
+      nombre_mueble: nombre,
+      tipo: tipo,
+      precio_base: Number(precio),
+      stock: Number(stock || 0),
+      estado: estado || 'activo',
+      "tamaño": tamano || 'Mediano',
+      material: material || 'Madera'
+    };
+
+    try {
+      let url = `${API_BASE}/mueble`;
+      let metodo = 'POST';
+
+      if (modoMueble === 'actualizar') {
+        if (!id) {
+          alert('Ingresa el ID del mueble a actualizar.');
+          return;
+        }
+        url = `${API_BASE}/mueble/${id}`;
+        metodo = 'PUT';
+      }
+
+      const resp = await fetch(url, {
+        method: metodo,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cuerpo)
+      });
+
+      if (!resp.ok) {
+        const txt = await resp.text();
+        console.error('Error al guardar/actualizar:', txt);
+        alert('Error al guardar/actualizar mueble.');
+        return;
+      }
+
+      limpiarFormMueble();
+      await listarMueblesAdmin();
+      alert(modoMueble === 'crear'
+        ? 'Mueble creado correctamente.'
+        : 'Mueble actualizado correctamente.');
+    } catch (e) {
+      console.error(e);
+      alert('Error al guardar/actualizar mueble (conexión).');
+    }
+  }
+
+  async function eliminarMueble() {
+    const id = document.getElementById('a-id-eliminar').value;
+    if (!id) {
+      alert('Ingresa un ID.');
+      return;
+    }
+
+    if (!confirm('¿Eliminar mueble con ID ' + id + '?')) return;
+
+    try {
+      const resp = await fetch(`${API_BASE}/mueble/${id}`, { method: 'DELETE' });
+      if (!resp.ok) {
+        alert('Error al eliminar mueble.');
+        return;
+      }
+      document.getElementById('a-id-eliminar').value = '';
+      await listarMueblesAdmin();
+      alert('Mueble eliminado.');
+    } catch (e) {
+      console.error(e);
+      alert('Error al eliminar mueble (conexión).');
+    }
+  }
+
+  function ocultarTodosLosFormVariante() {
+    document.getElementById('form-variante-crear').classList.add('hidden');
+    document.getElementById('form-variante-actualizar').classList.add('hidden');
+    document.getElementById('form-variante-eliminar').classList.add('hidden');
+  }
+
+  function mostrarFormVariante(modo) {
+    ocultarTodosLosFormVariante();
+
+    if (modo === 'crear') {
+      document.getElementById('form-variante-crear').classList.remove('hidden');
+    } else if (modo === 'actualizar') {
+      document.getElementById('form-variante-actualizar').classList.remove('hidden');
+    } else if (modo === 'eliminar') {
+      document.getElementById('form-variante-eliminar').classList.remove('hidden');
+    }
+  }
+
+  async function listarVariantes() {
+    try {
+      const resp = await fetch(`${API_BASE}/variante`);
+      if (!resp.ok) throw new Error();
+      const data = await resp.json();
+      dibujarTablaVariantes('tabla-variantes', data);
+    } catch (e) {
+      console.error(e);
+      alert('Error al listar variantes.');
+    }
+  }
+
+  async function listarVariantesCliente() {
+    try {
+      const resp = await fetch(`${API_BASE}/variante`);
+      if (!resp.ok) throw new Error();
+      const data = await resp.json();
+      dibujarTablaVariantes('tabla-variantes-cliente', data);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function guardarVariante(modo) {
+    try {
+      let url = `${API_BASE}/variante`;
+      let metodo = 'POST';
+      let cuerpo = null;
+
+      if (modo === 'crear') {
+        const nombre = document.getElementById('v-nombre-crear').value.trim();
+        const porcentaje = Number(document.getElementById('v-porcentaje-crear').value);
+
+        if (!nombre) {
+          alert('Ingresa el nombre de la variante.');
+          return;
+        }
+
+        cuerpo = {
+          nombre_variante: nombre,
+          porcentaje: porcentaje
+        };
+        metodo = 'POST';
+        url = `${API_BASE}/variante`;
+      } else if (modo === 'actualizar') {
+        const nombreActual = document.getElementById('v-nombre-actual').value.trim();
+        const nuevoNombre  = document.getElementById('v-nombre-nuevo').value.trim();
+        const porcentaje   = Number(document.getElementById('v-porcentaje-actualizar').value);
+
+        if (!nombreActual) {
+          alert('Ingresa el nombre actual de la variante.');
+          return;
+        }
+
+        cuerpo = {
+          nombre_variante: nuevoNombre || nombreActual,
+          porcentaje: porcentaje
+        };
+        metodo = 'PUT';
+        url = `${API_BASE}/variante/${encodeURIComponent(nombreActual)}`;
+      } else if (modo === 'eliminar') {
+        const nombreEliminar = document.getElementById('v-nombre-eliminar').value.trim();
+        if (!nombreEliminar) {
+          alert('Ingresa el nombre de la variante a eliminar.');
+          return;
+        }
+
+        if (!confirm(`¿Eliminar la variante "${nombreEliminar}"?`)) return;
+
+        metodo = 'DELETE';
+        url = `${API_BASE}/variante/${encodeURIComponent(nombreEliminar)}`;
+      }
+
+      const opcionesFetch = {
+        method: metodo,
+        headers: { 'Content-Type': 'application/json' }
+      };
+
+      if (metodo === 'POST' || metodo === 'PUT') {
+        opcionesFetch.body = JSON.stringify(cuerpo);
+      }
+
+      const resp = await fetch(url, opcionesFetch);
+
+      if (!resp.ok) {
+        const txt = await resp.text();
+        console.error(txt);
+        alert('Error al procesar la variante.');
+        return;
+      }
+
+      if (modo === 'crear') {
+        document.getElementById('v-nombre-crear').value = '';
+        document.getElementById('v-porcentaje-crear').value = '';
+      } else if (modo === 'actualizar') {
+        document.getElementById('v-nombre-actual').value = '';
+        document.getElementById('v-nombre-nuevo').value = '';
+        document.getElementById('v-porcentaje-actualizar').value = '';
+      } else if (modo === 'eliminar') {
+        document.getElementById('v-nombre-eliminar').value = '';
+      }
+
+      await listarVariantes();
+      alert('Acción sobre variante realizada correctamente.');
+    } catch (e) {
+      console.error(e);
+      alert('Error de conexión al procesar la variante.');
+    }
+  }
+
+  function agregarLinea(tbodyId) {
+    const tbody = document.getElementById(tbodyId);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="number" class="cmd-id" placeholder="ID" /></td>
+      <td><input type="text" class="cmd-variante" placeholder="normal" /></td>
+      <td><input type="number" class="cmd-cantidad" placeholder="1" /></td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  function recogerComandos(tbodyId) {
+    const filas = document.getElementById(tbodyId).querySelectorAll('tr');
+    const comandos = [];
+    filas.forEach(tr => {
+      const id = Number(tr.querySelector('.cmd-id').value);
+      const variante = tr.querySelector('.cmd-variante').value.trim();
+      const cantidad = Number(tr.querySelector('.cmd-cantidad').value);
+      if (id && cantidad) {
+        comandos.push({
+          idMueble: id,
+          variante: variante || "normal",
+          cantidad: cantidad
+        });
+      }
+    });
+    return comandos;
+  }
+
+  async function cotizarGustavo() {
+    const comandos = recogerComandos('g-comandos-body');
+    if (!comandos.length) {
+      alert('Agrega al menos una línea para cotizar.');
+      return;
+    }
+    try {
+      const resp = await fetch(`${API_BASE}/op/cotizar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comandos)
+      });
+      const texto = await resp.text();
+      document.getElementById('g-resultado-cotizacion').textContent = texto;
+    } catch (e) {
+      console.error(e);
+      alert('Error al cotizar (Gustavo).');
+    }
+  }
+
+  async function venderGustavo() {
+    const comandos = recogerComandos('g-comandos-body');
+    if (!comandos.length) {
+      alert('Agrega al menos una línea para vender.');
+      return;
+    }
+    try {
+      const resp = await fetch(`${API_BASE}/op/vender`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comandos)
+      });
+      const texto = await resp.text();
+      document.getElementById('g-resultado-venta').textContent = texto;
+      await listarMueblesAdmin();
+    } catch (e) {
+      console.error(e);
+      alert('Error al vender (Gustavo).');
+    }
+  }
+
+  async function listarMueblesUsuario() {
+    try {
+      const resp = await fetch(`${API_BASE}/mueble`);
+      if (!resp.ok) throw new Error();
+      const data = await resp.json();
+      dibujarTabla('tabla-usuario', data);
+    } catch (e) {
+      console.error(e);
+      alert('Error al listar muebles (usuario)');
+    }
+  }
+
+  async function cotizarCliente() {
+    const comandos = recogerComandos('u-comandos-body');
+    if (!comandos.length) {
+      alert('Agrega al menos una línea para cotizar.');
+      return;
+    }
+    try {
+      const resp = await fetch(`${API_BASE}/op/cotizar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comandos)
+      });
+      const texto = await resp.text();
+      document.getElementById('u-resultado-cotizacion').textContent = texto;
+    } catch (e) {
+      console.error(e);
+      alert('Error al cotizar (cliente).');
+    }
+  }
+
+  async function venderCliente() {
+    const comandos = recogerComandos('u-comandos-body');
+    if (!comandos.length) {
+      alert('Agrega al menos una línea para comprar.');
+      return;
+    }
+    try {
+      const resp = await fetch(`${API_BASE}/op/vender`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comandos)
+      });
+      const texto = await resp.text();
+      document.getElementById('u-resultado-venta').textContent = texto;
+      await listarMueblesUsuario();
+    } catch (e) {
+      console.error(e);
+      alert('Error al comprar (cliente).');
+    }
+  }
+</script>
+</body>
+</html>
